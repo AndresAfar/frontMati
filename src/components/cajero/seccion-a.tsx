@@ -13,9 +13,9 @@ import { useSession } from "@/lib/session-context";
 import { useState } from "react";
 
 function barraConfianza(confianza: number) {
-  if (confianza >= 90) return "bg-emerald-500";
-  if (confianza >= 70) return "bg-amber-400";
-  return "bg-rose-400";
+  if (confianza >= 90) return "bg-success";
+  if (confianza >= 70) return "bg-warning";
+  return "bg-error";
 }
 
 export default function SeccionA() {
@@ -29,14 +29,14 @@ export default function SeccionA() {
   };
 
   return (
-    <section className="flex flex-col bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <section className="flex flex-col bg-surface rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
       <header className="px-5 py-4 border-b border-slate-100 flex items-center gap-2">
-        <ClipboardList className="h-5 w-5 text-[#0F2C59]" />
+        <ClipboardList className="h-5 w-5 text-primary" />
         <div>
-          <h2 className="font-bold text-slate-800 text-sm">
+          <h2 className="font-bold text-ink text-sm">
             Datos Detectados Temporales
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-muted">
             Extraídos de la conversación LSC · Sesión actual
           </p>
         </div>
@@ -44,7 +44,7 @@ export default function SeccionA() {
 
       <div className="flex-1 p-4 flex flex-col gap-3 overflow-y-auto">
         {datosDetectados.length === 0 ? (
-          <div className="flex-1 flex flex-col items-center justify-center text-center py-10 text-slate-400">
+          <div className="flex-1 flex flex-col items-center justify-center text-center py-10 text-muted">
             <Inbox className="h-10 w-10 mb-3" />
             <p className="text-sm font-medium">Sin datos detectados aún</p>
             <p className="text-xs mt-1">
@@ -62,34 +62,34 @@ export default function SeccionA() {
                 transition={{ duration: 0.2 }}
                 className={`rounded-xl border p-3 ${
                   dato.confirmado
-                    ? "border-emerald-300 bg-emerald-50/60"
+                    ? "border-success-200 bg-success-50"
                     : "border-slate-200 bg-slate-50"
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2 min-w-0">
                     {dato.confirmado && (
-                      <BadgeCheck className="h-4 w-4 text-emerald-500 shrink-0" />
+                      <BadgeCheck className="h-4 w-4 text-success shrink-0" />
                     )}
-                    <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 truncate">
+                    <span className="text-[11px] font-semibold uppercase tracking-wide text-muted truncate">
                       {dato.etiqueta}
                     </span>
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     <button
                       onClick={() => copiar(dato.id, dato.valor)}
-                      className="rounded-md p-1.5 text-slate-400 hover:bg-white hover:text-slate-700 transition"
+                      className="rounded-md p-1.5 text-muted hover:bg-white hover:text-ink transition"
                       aria-label="Copiar valor"
                     >
                       {copiado === dato.id ? (
-                        <Check className="h-4 w-4 text-emerald-500" />
+                        <Check className="h-4 w-4 text-success" />
                       ) : (
                         <Copy className="h-4 w-4" />
                       )}
                     </button>
                     <button
                       onClick={() => eliminarDato(dato.id)}
-                      className="rounded-md p-1.5 text-slate-400 hover:bg-white hover:text-rose-500 transition"
+                      className="rounded-md p-1.5 text-muted hover:bg-white hover:text-error transition"
                       aria-label="Eliminar"
                     >
                       <Trash2 className="h-4 w-4" />
@@ -97,7 +97,7 @@ export default function SeccionA() {
                   </div>
                 </div>
 
-                <p className="mt-1 text-base font-bold text-slate-800 break-words">
+                <p className="mt-1 text-base font-bold text-ink break-words">
                   {dato.valor}
                 </p>
 
@@ -110,15 +110,15 @@ export default function SeccionA() {
                       style={{ width: `${dato.confianza}%` }}
                     />
                   </div>
-                  <span className="text-[11px] font-semibold text-slate-500">
+                  <span className="text-[11px] font-semibold text-muted">
                     {dato.confianza}%
                   </span>
                   <button
                     onClick={() => confirmarDato(dato.id)}
                     className={`ml-1 rounded-md px-2 py-1 text-[11px] font-semibold transition ${
                       dato.confirmado
-                        ? "bg-emerald-500 text-white"
-                        : "bg-white text-slate-600 border border-slate-200 hover:border-emerald-400 hover:text-emerald-600"
+                        ? "bg-success text-white"
+                        : "bg-white text-muted border border-slate-200 hover:border-success-400 hover:text-success-600"
                     }`}
                   >
                     {dato.confirmado ? "Confirmado" : "Confirmar"}

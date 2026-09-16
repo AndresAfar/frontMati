@@ -9,23 +9,23 @@ import SeccionD from "@/components/cajero/seccion-d";
 
 export default function CajeroPage() {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-800 flex flex-col">
-      <header className="bg-[#0F2C59] text-white px-5 py-4 flex items-center justify-between">
+    <main className="min-h-screen bg-background text-ink flex flex-col">
+      <header className="bg-primary text-white px-5 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="rounded-lg p-2 text-slate-200 hover:bg-white/10 transition"
+            className="rounded-lg p-2 text-white/90 hover:bg-white/10 transition"
             aria-label="Volver"
           >
             <ArrowLeft className="h-5 w-5" />
           </Link>
           <div className="flex items-center gap-2">
-            <Landmark className="h-6 w-6 text-emerald-400" />
+            <Landmark className="h-6 w-6 text-white" />
             <span className="font-bold">Banco Contigo</span>
           </div>
         </div>
-        <div className="flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-400">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+        <div className="flex items-center gap-2 rounded-full bg-success-500/20 px-3 py-1 text-xs font-semibold text-success-300">
+          <span className="h-2 w-2 rounded-full bg-success-400 animate-pulse" />
           Estación Cajero
         </div>
       </header>

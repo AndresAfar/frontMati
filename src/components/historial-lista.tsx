@@ -24,14 +24,14 @@ export const metaTipo: Record<
   Evento["tipo"],
   { icon: typeof Hand; etiqueta: string; color: string }
 > = {
-  seña: { icon: Hand, etiqueta: "Seña detectada", color: "text-emerald-500" },
-  teclado: { icon: Keyboard, etiqueta: "Teclado", color: "text-sky-500" },
-  texto: { icon: MessageSquareText, etiqueta: "Texto", color: "text-indigo-500" },
-  voz: { icon: Mic, etiqueta: "Voz", color: "text-amber-500" },
+  seña: { icon: Hand, etiqueta: "Seña detectada", color: "text-success" },
+  teclado: { icon: Keyboard, etiqueta: "Teclado", color: "text-primary" },
+  texto: { icon: MessageSquareText, etiqueta: "Texto", color: "text-primary-light" },
+  voz: { icon: Mic, etiqueta: "Voz", color: "text-warning" },
   boton: {
     icon: MousePointerClick,
     etiqueta: "Botón rápido",
-    color: "text-indigo-500",
+    color: "text-primary-light",
   },
 };
 
@@ -56,7 +56,7 @@ export default function HistorialLista({
       style={{ maxHeight }}
     >
       {historial.length === 0 ? (
-        <div className="flex-1 flex flex-col items-center justify-center text-center py-10 text-slate-400">
+        <div className="flex-1 flex flex-col items-center justify-center text-center py-10 text-muted">
           <History className="h-10 w-10 mb-3" />
           <p className="text-sm font-medium">Aún no hay eventos</p>
           <p className="text-xs mt-1">
@@ -79,8 +79,8 @@ export default function HistorialLista({
                 <div
                   className={`max-w-[85%] rounded-xl px-3 py-2 ${
                     esCajero
-                      ? "bg-[#0F2C59] text-white"
-                      : "bg-slate-100 text-slate-800"
+                      ? "bg-primary text-white"
+                      : "bg-slate-100 text-ink"
                   }`}
                 >
                   <div className="flex items-center gap-1.5 text-[10px] font-semibold opacity-70 mb-0.5">

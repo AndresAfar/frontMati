@@ -147,14 +147,14 @@ export default function SeccionB() {
   };
 
   return (
-    <section className="flex flex-col bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <section className="flex flex-col bg-surface rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
       <header className="px-5 py-4 border-b border-slate-100 flex items-center gap-2">
-        <MessageSquareText className="h-5 w-5 text-[#0F2C59]" />
+        <MessageSquareText className="h-5 w-5 text-primary" />
         <div>
-          <h2 className="font-bold text-slate-800 text-sm">
+          <h2 className="font-bold text-ink text-sm">
             Comunicación Multimodal
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-muted">
             Voz · Chat · Botones rápidos hacia la tablet del cliente
           </p>
         </div>
@@ -163,8 +163,8 @@ export default function SeccionB() {
       <div className="p-4 flex flex-col gap-4">
         {/* Botones rápidos */}
         <div>
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-2">
-            <Zap className="h-3.5 w-3.5 text-emerald-500" />
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-muted mb-2">
+            <Zap className="h-3.5 w-3.5 text-success" />
             Palabras clave rápidas
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -172,7 +172,7 @@ export default function SeccionB() {
               <button
                 key={b.etiqueta}
                 onClick={() => despachar(b.texto)}
-                className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-left text-xs font-semibold text-slate-700 transition hover:border-emerald-400 hover:bg-emerald-50 hover:text-emerald-700 active:scale-[0.98]"
+                className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-left text-xs font-semibold text-ink transition hover:border-primary-300 hover:bg-primary-50 hover:text-primary-700 active:scale-[0.98]"
               >
                 {b.etiqueta}
               </button>
@@ -187,8 +187,8 @@ export default function SeccionB() {
               onClick={toggleMicrofono}
               className={`relative h-14 w-14 rounded-full flex items-center justify-center transition ${
                 escuchando
-                  ? "bg-emerald-500 text-white"
-                  : "bg-[#0F2C59] text-white hover:bg-[#0b2347]"
+                  ? "bg-success text-white"
+                  : "bg-primary text-white hover:bg-primary-600"
               }`}
             >
               {escuchando ? (
@@ -204,7 +204,7 @@ export default function SeccionB() {
                   {[0, 1, 2, 3, 4, 5, 6].map((i) => (
                     <motion.span
                       key={i}
-                      className="w-1.5 bg-emerald-500 rounded-full"
+                      className="w-1.5 bg-success rounded-full"
                       animate={{ height: [6, 24, 10, 22, 6] }}
                       transition={{
                         duration: 0.9,
@@ -215,11 +215,11 @@ export default function SeccionB() {
                   ))}
                 </div>
               ) : (
-                <p className="text-xs font-semibold text-slate-500">
+                <p className="text-xs font-semibold text-muted">
                   Toque el micrófono para hablar
                 </p>
               )}
-              <p className="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+              <p className="text-[11px] text-muted mt-1 flex items-center gap-1">
                 <Waves className="h-3 w-3" />
                 {soportaSTT
                   ? "Reconocimiento de voz activo"
@@ -230,15 +230,15 @@ export default function SeccionB() {
 
           {textoVoz && (
             <div className="mt-3 bg-slate-50 rounded-lg px-3 py-2">
-              <p className="text-sm text-slate-700">“{textoVoz}”</p>
+              <p className="text-sm text-ink">“{textoVoz}”</p>
             </div>
           )}
         </div>
 
         {/* Chat / texto libre */}
         <div>
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mb-2">
-            <MessageSquareText className="h-3.5 w-3.5 text-[#0F2C59]" />
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-muted mb-2">
+            <MessageSquareText className="h-3.5 w-3.5 text-primary" />
             Frase personalizada
           </div>
           <div className="flex gap-2">
@@ -248,12 +248,12 @@ export default function SeccionB() {
               onChange={(e) => setTexto(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && enviarTexto()}
               placeholder="Escriba una frase para el cliente..."
-              className="flex-1 rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
+              className="flex-1 rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary"
             />
             <button
               onClick={enviarTexto}
               disabled={!texto.trim()}
-              className="rounded-lg bg-[#0F2C59] px-3 py-2.5 text-white hover:bg-[#0b2347] transition disabled:opacity-40"
+              className="rounded-lg bg-primary px-3 py-2.5 text-white hover:bg-primary-600 transition disabled:opacity-40"
               aria-label="Enviar"
             >
               <Send className="h-4 w-4" />
@@ -267,7 +267,7 @@ export default function SeccionB() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-2 text-xs text-emerald-700 flex items-center gap-2"
+              className="rounded-lg bg-success-50 border border-success-200 px-3 py-2 text-xs text-success-700 flex items-center gap-2"
             >
               <Send className="h-3.5 w-3.5" />
               Acción enviada: el avatar interpreta en la tablet del cliente.
