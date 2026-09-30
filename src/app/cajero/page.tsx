@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Landmark } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import SeccionA from "@/components/cajero/seccion-a";
 import SeccionB from "@/components/cajero/seccion-b";
 import SeccionC from "@/components/cajero/seccion-c";
@@ -20,7 +20,11 @@ export default function CajeroPage() {
             <ArrowLeft className="h-5 w-5" />
           </Link>
           <div className="flex items-center gap-2">
-            <Landmark className="h-6 w-6 text-white" />
+            <img
+              src="/logo-blanco.png"
+              alt="Banco Contigo"
+              className="h-8 w-auto"
+            />
             <span className="font-bold">Banco Contigo</span>
           </div>
         </div>

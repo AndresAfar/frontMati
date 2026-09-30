@@ -161,7 +161,11 @@ export default function ClientePage() {
             <ArrowLeft className="h-5 w-5" />
           </Link>
           <div className="flex items-center gap-2">
-            <Languages className="h-6 w-6 text-white" />
+            <img
+              src="/logo-blanco.png"
+              alt="Banco Contigo"
+              className="h-8 w-auto"
+            />
             <span className="font-bold">Tablet Cliente</span>
           </div>
         </div>

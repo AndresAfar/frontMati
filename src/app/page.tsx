@@ -4,8 +4,8 @@ import Link from "next/link";
 import {
   MonitorSmartphone,
   Banknote,
-  Languages,
   ArrowRight,
+  Palette,
 } from "lucide-react";
 
 const demos = [
@@ -27,7 +27,22 @@ const demos = [
       "Datos detectados, botones rápidos, voz/texto, feed LSC en vivo e historial unificado de sesión.",
     accent: "primary",
   },
+  {
+    href: "/ui",
+    icon: Palette,
+    title: "Guía de Estilos",
+    subtitle: "Paleta y componentes",
+    description:
+      "Referencia visual de colores, tipografía, botones, alertas, formularios y componentes del sistema.",
+    accent: "warning",
+  },
 ];
+
+const acentoFondo: Record<string, string> = {
+  success: "bg-success text-white",
+  primary: "bg-primary text-white",
+  warning: "bg-warning text-white",
+};
 
 export default function Home() {
   return (
@@ -35,9 +50,11 @@ export default function Home() {
       <header className="w-full bg-primary text-white">
         <div className="mx-auto max-w-5xl px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-xl bg-primary-light flex items-center justify-center">
-              <Languages className="h-6 w-6 text-white" />
-            </div>
+            <img
+              src="/logo-blanco.png"
+              alt="Logo Banco Contigo"
+              className="h-10 w-auto"
+            />
             <div>
               <h1 className="text-xl font-bold leading-tight">Banco Contigo</h1>
               <p className="text-xs text-primary-100">
@@ -72,11 +89,7 @@ export default function Home() {
               className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-surface p-7 transition hover:border-primary-300 hover:shadow-lg"
             >
               <div
-                className={`h-14 w-14 rounded-xl flex items-center justify-center mb-5 ${
-                  d.accent === "success"
-                    ? "bg-success text-white"
-                    : "bg-primary text-white"
-                }`}
+                className={`h-14 w-14 rounded-xl flex items-center justify-center mb-5 ${acentoFondo[d.accent]}`}
               >
                 <d.icon className="h-7 w-7" />
               </div>
@@ -96,7 +109,12 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-slate-200 py-6 text-center text-xs text-muted">
+      <footer className="border-t border-slate-200 py-6 flex flex-col items-center gap-2 text-center text-xs text-muted">
+        <img
+          src="/logo-azul.png"
+          alt="Logo Banco Contigo"
+          className="h-8 w-auto"
+        />
         Mockup visual — Banco Accesible · LSC
       </footer>
     </main>
